@@ -1,0 +1,17 @@
+
+version: '2'
+
+services:
+  node-todo:
+    image: node-todo:latest
+    build:
+      context: .
+      dockerfile: dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 8080:8080
+      - 5858:5858
+    volumes:
+      - .:/usr/src/app
+    command: node --debug=5858 server.js
