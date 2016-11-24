@@ -16,6 +16,16 @@ Node provides the RESTful API. Angular provides the frontend and accesses the AP
 3. Place your own MongoDB URI in `config/database.js`
 3. Start the server: `node server.js`
 4. View in browser at `http://localhost:8080`
+5. To dockerize on windows using docker tool box, there are some set up to do:
+    5.1 'docker-machine --storage-path ''YourPathForDockerMachine'' create default', 
+    5.2 'docker-machine start default', and then 'docker-machine ls'
+    5.3 'docker-machine env --shell cmd default', 
+    5.4 'FOR /f "tokens=*" %i IN ('docker-machine env --shell cmd default') DO %i', 
+6. Now you can build docker image by 'docker build  -f .\dockerfile -t YourDockerHubId/YourApp:latest .'
+7. But if you then 'docker push YourDockerHubId/YourApp:latest', you will get a 'unauthorized: authentication required' error,
+    to solve it, you need to firs run 'docker login -u YourDockerHubId https://index.docker.io/v1/', and provide password,
+    essentially to authenticate first, and then you can run 'docker push YourDockerHubId/YourApp:latest'
+8. Success !!
 
 ## Tutorial Series
 
